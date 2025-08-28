@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Song Approval</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 2rem; max-width: 800px; margin: auto; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    .song { background: #fff; padding: 1rem; margin-bottom: 1.5rem; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
+    iframe { border-radius: 8px; width: 100%; }
+    .choices { margin-top: 0.5rem; display: flex; gap: 1rem; }
+    label { cursor: pointer; }
+    button { margin-top: 1rem; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; background: #0077ff; color: #fff; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #005fcc; }
+  </style>
+</head>
+<body>
+  <h1>🎶 Wedding Vibe Check 🎶</h1>
+
+  <form action="https://formspree.io/f/mjkekoar" method="POST">
+
+    <!-- Song 1 -->
+    <div class="song">
+      <p><strong>Shut Up and Dance – WALK THE MOON</strong></p>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/walk-the-moon/shut-up-and-dance">
+      </iframe>
+      <div class="choices">
+        <label><input type="radio" name="Shut Up and Dance" value="Yes"> ✅ Yes</label>
+        <label><input type="radio" name="Shut Up and Dance" value="Maybe"> 🤔 Maybe</label>
+        <label><input type="radio" name="Shut Up and Dance" value="No"> ❌ No</label>
+      </div>
+    </div>
+
+    <!-- Song 2 -->
+    <div class="song">
+      <p><strong>Uptown Funk – Bruno Mars</strong></p>
+      <iframe style="border:0; width:100%; height:120px;"
+        src="https://bandcamp.com/EmbeddedPlayer/track=2403889715/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/">
+      </iframe>
+      <div class="choices">
+        <label><input type="radio" name="Uptown Funk" value="Yes"> ✅ Yes</label>
+        <label><input type="radio" name="Uptown Funk" value="Maybe"> 🤔 Maybe</label>
+        <label><input type="radio" name="Uptown Funk" value="No"> ❌ No</label>
+      </div>
+    </div>
+
+    <!-- Song 3 -->
+    <div class="song">
+      <p><strong>September – Earth, Wind & Fire</strong></p>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/Gs069dndIYk"
+        title="September – Earth, Wind & Fire" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <div class="choices">
+        <label><input type="radio" name="September" value="Yes"> ✅ Yes</label>
+        <label><input type="radio" name="September" value="Maybe"> 🤔 Maybe</label>
+        <label><input type="radio" name="September" value="No"> ❌ No</label>
+      </div>
+    </div>
+
+    <button type="submit">Submit Responses</button>
+  </form>
+</body>
+</html>
