@@ -1,76 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You!</title>
   <style>
     body {
+      margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: #f4d8cd;
-      font-family: sans-serif;
-      color: #1e555c;
+      background-color: #f4d8cd;
+      font-family: Arial, sans-serif;
+      color: #3a2e39;
       text-align: center;
-      overflow: hidden;
+      overflow: hidden; /* so confetti doesn't cause scrollbars */
     }
+
+    .thank-you-container {
+      max-width: 90%;
+      padding: 1.5em;
+      background: #ffffffcc;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
     h1 {
-      font-size: 2.5rem;
+      font-size: 1.8em;
+      color: #1e555c;
+      margin-bottom: 0.5em;
     }
+
     p {
-      font-size: 1.2rem;
+      font-size: 1.1em;
+      color: #3a2e39;
+      line-height: 1.4;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* so you can still scroll/tap */
+      z-index: 10;
     }
   </style>
 </head>
 <body>
-  <div>
-    <h1>🎉 Thank You! 🎉</h1>
-    <p>Your vibe check has been submitted.</p>
-  </div>
-
   <canvas id="confetti"></canvas>
 
+  <div class="thank-you-container">
+    <h1>🎉 Thank You!</h1>
+    <p>Your vibe check has been submitted successfully.<br>
+       I am excited to celebrate with you! 💃🕺</p>
+  </div>
+
   <script>
-    const canvas = document.getElementById("confetti");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // Simple Confetti
+    const confettiCanvas = document.getElementById("confetti");
+    const ctx = confettiCanvas.getContext("2d");
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
 
-    const pieces = Array.from({length: 150}).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
-      w: 8,
-      h: 16,
-      color: ["#3a2e39", "#1e555c", "#f4d8cd", "#edb183", "#f15152"][Math.floor(Math.random()*5)],
-      dy: Math.random() * 3 + 2,
-      dx: (Math.random() - 0.5) * 2,
-      rotate: Math.random() * 360
-    }));
+    window.addEventListener("resize", () => {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    });
 
-    function draw() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      pieces.forEach(p => {
-        ctx.save();
-        ctx.translate(p.x + p.w/2, p.y + p.h/2);
-        ctx.rotate(p.rotate * Math.PI/180);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-        ctx.restore();
+    const confettiPieces = [];
+    const colors = ["#3a2e39", "#1e555c", "#f4d8cd", "#edb183", "#f15152"];
 
-        p.y += p.dy;
-        p.x += p.dx;
-        p.rotate += 5;
-
-        if (p.y > canvas.height) {
-          p.y = -20;
-          p.x = Math.random() * canvas.width;
-        }
+    for (let i = 0; i < 120; i++) {
+      confettiPieces.push({
+        x: Math.random() * confettiCanvas.width,
+        y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 50 + 50,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.random() * 10 - 10,
+        tiltAngleIncremental: Math.random() * 0.07 + 0.05,
+        tiltAngle: 0
       });
-      requestAnimationFrame(draw);
     }
-    draw();
-  </script>
-</body>
-</html>
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confettiPieces.forEach((p) => {
+        ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.arc(p.x, p.
