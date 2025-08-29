@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You!</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4d8cd;
+      font-family: sans-serif;
+      color: #1e555c;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>🎉 Thank You! 🎉</h1>
+    <p>Your vibe check has been submitted.</p>
+  </div>
+
+  <canvas id="confetti"></canvas>
+
+  <script>
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const pieces = Array.from({length: 150}).map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      w: 8,
+      h: 16,
+      color: ["#3a2e39", "#1e555c", "#f4d8cd", "#edb183", "#f15152"][Math.floor(Math.random()*5)],
+      dy: Math.random() * 3 + 2,
+      dx: (Math.random() - 0.5) * 2,
+      rotate: Math.random() * 360
+    }));
+
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      pieces.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x + p.w/2, p.y + p.h/2);
+        ctx.rotate(p.rotate * Math.PI/180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+
+        p.y += p.dy;
+        p.x += p.dx;
+        p.rotate += 5;
+
+        if (p.y > canvas.height) {
+          p.y = -20;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
