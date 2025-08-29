@@ -5,63 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Vibe Check</title>
   <style>
-    body { 
-      font-family: sans-serif; 
-      background: #f4d8cd; 
-      padding: 2rem; 
-      max-width: 800px; 
-      margin: auto; 
-      color: #3a2e39;
+    body {
+      font-family: sans-serif;
+      background: #f4d8cd; /* soft peach */
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      color: #3a2e39; /* deep plum */
     }
-    h1 { 
-      text-align: center; 
-      margin-bottom: 2rem; 
-      color: #1e555c;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #1e555c; /* teal */
     }
-    .song { 
-      background: #fff; 
-      padding: 1rem; 
-      margin-bottom: 1.5rem; 
-      border-radius: 12px; 
+
+    .song {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border-left: 8px solid #edb183;
+      border-left: 6px solid #edb183; /* accent */
     }
-    iframe { 
-      border-radius: 8px; 
-      width: 100%; 
+
+    iframe {
+      border-radius: 8px;
+      width: 100%;
     }
-    .choices { 
-      margin-top: 0.5rem; 
-      display: flex; 
-      gap: 1rem; 
+
+    .choices {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 1rem;
     }
-    label { 
-      cursor: pointer; 
+
+    label {
+      cursor: pointer;
     }
-    button { 
-      margin-top: 1rem; 
-      padding: 0.75rem 1.5rem; 
-      border: none; 
-      border-radius: 6px; 
-      background: #f15152; 
-      color: #fff; 
-      font-size: 1rem; 
-      cursor: pointer; 
+
+    button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      background: #f15152; /* coral red */
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
-    button:hover { 
-      background: #d73f41; 
+
+    button:hover {
+      background: #1e555c; /* teal hover */
     }
   </style>
 </head>
 <body>
   <h1>🎶 Wedding Vibe Check 🎶</h1>
 
-  <form action="thankyou.html" method="POST">
+  <form action="https://formspree.io/f/mjkekoar" method="POST">
 
-    <!-- keep your songs as-is... -->
+    <!-- all your songs are here again -->
+    <!-- Song 1 -->
+    <div class="song">
+      <p><strong>Levitating Lady (Ticklish Reboot)</strong></p>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ticklishreboots/levitating-lady-ticklish-reboot">
+      </iframe>
+      <div class="choices">
+        <label><input type="radio" name="Levitating Lady (Ticklish Reboot)" value="Yes"> ✅ Yes</label>
+        <label><input type="radio" name="Levitating Lady (Ticklish Reboot)" value="No"> ❌ No</label>
+      </div>
+    </div>
+
+    <!-- Song 2 -->
+    <div class="song">
+      <p><strong>CRANK THAT (KEMASH EDIT)</strong></p>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/kemashrach/crank-that-kemash-edit">
+      </iframe>
+      <div class="choices">
+        <label><input type="radio" name="CRANK THAT (KEMASH EDIT)" value="Yes"> ✅ Yes</label>
+        <label><input type="radio" name="CRANK THAT (KEMASH EDIT)" value="No"> ❌ No</label>
+      </div>
+    </div>
+
+    <!-- Song 3 -->
+    <div class="song">
+      <p><strong>Lose Control (Nylze 'Drive Opolopo' Edit)</strong></p>
+      <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=2940365861/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://nylze.bandcamp.com/track/lose-control-nylze-drive-opolopo-edit-clean-version">Lose Control (Nylze &#39;Drive Opolopo&#39; Edit) Clean Version by Missy Elliot, Fatman Scoop &amp; Opolopo</a></iframe>
+      <div class="choices">
+        <label><input type="radio" name="Lose Control (Nylze 'Drive Opolopo' Edit)" value="Yes"> ✅ Yes</label>
+        <label><input type="radio" name="Lose Control (Nylze 'Drive Opolopo' Edit)" value="No"> ❌ No</label>
+      </div>
+    </div>
+
+    <!-- Song 4 -->
+    <div class="song">
+      <p><strong>MJ x BRII - Rock With You</strong></p>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/boulevard95/mj-x-brii-rock-with-you-blvd95-acapella-edit">
+      </iframe>
+      <div class="choices">
+        <label><input type="radio" name="MJ x BRII - Rock With You" value="Yes"> ✅ Yes</label>
+        <label><input type="radio" name="MJ x BRII - Rock With You" value="No"> ❌ No</label>
+      </div>
+    </div>
+
+    <!-- ... -->
+    <!-- Keep the rest of your songs here (5–15) unchanged -->
+    <!-- ... -->
 
     <button type="submit">Submit Responses</button>
   </form>
