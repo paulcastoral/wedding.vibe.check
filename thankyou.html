@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +56,7 @@
   <div class="thank-you-container">
     <h1>🎉 Thank You!</h1>
     <p>Your vibe check has been submitted successfully.<br>
-       I am excited to celebrate with you! 💃🕺</p>
+       Excited to celebrate with you! 💃🕺</p>
   </div>
 
   <script>
@@ -91,4 +92,27 @@
       confettiPieces.forEach((p) => {
         ctx.beginPath();
         ctx.fillStyle = p.color;
-        ctx.arc(p.x, p.
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+        ctx.fill();
+      });
+      updateConfetti();
+      requestAnimationFrame(drawConfetti);
+    }
+
+    function updateConfetti() {
+      confettiPieces.forEach((p) => {
+        p.tiltAngle += p.tiltAngleIncremental;
+        p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+        p.x += Math.sin(p.tiltAngle);
+
+        if (p.y > confettiCanvas.height) {
+          p.x = Math.random() * confettiCanvas.width;
+          p.y = -10;
+        }
+      });
+    }
+
+    drawConfetti();
+  </script>
+</body>
+</html>
